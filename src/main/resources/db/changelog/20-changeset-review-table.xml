@@ -1,0 +1,48 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="4" author="Igor Pomazkov">
+        <createTable tableName="review">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="usr_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_usr_review" references="usr(id)"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_film_review" references="film(id)"/>
+            </column>
+            <column name="rate" type="integer"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="7" runInTransaction="true" author="Igor Pomazkov">
+        <insert tableName="review">
+            <column name="film_id" value="1"/>
+            <column name="usr_id" value="1"/>
+            <column name="created_at" value="now()"/>
+            <column name="rate" value="5"/>
+        </insert>
+        <insert tableName="review">
+            <column name="film_id" value="1"/>
+            <column name="usr_id" value="2"/>
+            <column name="created_at" value="now()"/>
+            <column name="rate" value="4"/>
+        </insert>
+        <insert tableName="review">
+            <column name="film_id" value="2"/>
+            <column name="usr_id" value="2"/>
+            <column name="created_at" value="now()"/>
+            <column name="rate" value="4"/>
+        </insert>
+        <insert tableName="review">
+            <column name="film_id" value="2"/>
+            <column name="usr_id" value="1"/>
+            <column name="created_at" value="now()"/>
+            <column name="rate" value="4"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

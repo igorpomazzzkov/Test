@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="3" author="Igor Pomazkov">
+        <createTable tableName="film">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="name" type="varchar(255)"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="6" runInTransaction="true" author="Igor Pomazkov">
+        <insert tableName="film">
+            <column name="name" value="Криминальное чтиво"/>
+        </insert>
+        <insert tableName="film">
+            <column name="name" value="Джанго освобожденный"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
